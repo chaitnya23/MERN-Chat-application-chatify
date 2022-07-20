@@ -1,0 +1,251 @@
+body{
+  background: url('../World\ Map.jpg');
+  backdrop-filter: blur(6px);
+  height: 40rem;
+  background-repeat: no-repeat;
+background-size: cover;
+
+}
+.box{
+  background-color: rgb(245, 245, 245);
+  position: relative;
+  top: 3rem;
+  width: 30rem;
+  border-radius: 1.2rem;
+  
+
+  
+
+}
+.btns div{
+ width: 50%;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5rem;
+  cursor: pointer;
+}
+
+.box input{
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  border-bottom: solid 2px black ;
+  
+}
+.box .btn{
+  border: none;
+  background-color: rgb(94, 94, 245);
+}
+.box .btn:hover{
+  background-color: rgba(135, 135, 248, 0.918);
+}
+
+@media only screen and (max-width:600px) {
+  .box{
+ 
+    width: 15rem;
+  
+  
+  }
+}
+.header{
+  background-color: #1c2541;
+  height: 2.82em;
+  color: white;
+  justify-content: end;
+
+}
+
+.header img{
+  width: 90%;
+  height: 2.5rem;
+  object-fit: contain;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dp-click{
+  position: absolute;
+  width: 12rem;
+  background-color: white;
+  top: 3rem;
+  right: 1.5rem;
+  border-radius: 5px;
+  z-index: 5;
+  transition: all 0.5s;
+
+}
+.cancel-dp-info{
+  width: 30%;
+}
+.dp-click button{
+  height: 2rem;
+  text-align: center;
+}
+.profile-area{
+  position: absolute;
+  height: 35.6rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+ 
+}
+.dp-row{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 4rem;
+}
+
+.dp-box{
+
+  width: 20rem;
+  height: 25rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.dp-img-box{
+  height: 45%;
+}
+.dp-box img{
+  width: 65%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: contain;
+
+}
+.dp-box h4,.dp-box h5{
+  font-family: cursive;
+}
+
+.cancel-box button{
+  width: 20%;
+}
+.signal-user-box img{
+  width: 100%;
+  height: 3rem;
+ 
+  object-fit: contain;
+  border-radius: 50%;
+ 
+}
+.users-box{
+  background-color: #6bacf7f3;
+  height: 34rem;
+
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+.signal-user-box {
+  background-color: #ffffff;
+  height: 100%;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.message-box{
+  height: 31rem;
+  background-color: white;
+  border-radius: 10px;
+}
+.msg-btn{
+  width: 100%;
+  background-color: rgb(255, 182, 25);
+}
+.messages-container{
+  background-color: #e7e7e7;
+  height: 100%;
+  border-radius: 10px;
+}
+.receiver-info img{
+  width: 100%;
+  height: 2.5rem;
+ 
+  object-fit: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.msg-content{
+  margin: 2px 0 2px 2px;
+
+}
+.messages-container{
+  
+  overflow-x: hidden;
+  height: 95%;
+}
+
+
+.msg-content span{
+  border-radius: 15px;
+  
+  padding: 4px 13px 4px 13px;
+  max-width: 17rem;
+  word-break:break-word;
+
+}
+
+.msg-content  img{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  object-fit: contain;
+}
+.chatbox{
+  background-color: aliceblue;
+  width: 93%;
+  border-radius: 10px;
+  padding: 8px;
+}
+.img-box{
+  height: 2rem;
+  width: 2rem;
+}
+.col-sm-0{
+  display: none;
+}
+.LogoBox{
+  overflow: hidden;
+}
+.LogoBox img{
+  width: 100%;
+  height: 35rem;
+  transform: translateY(-50px);
+}
+.styles_scrollable-div__prSCv{
+  height: 0%;
+}
+.create-room-box{
+  background-color: #4c4dcda6;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+}
+.input-area{
+  background-color: rgba(0, 0, 0, 0.87);
+  position: absolute;
+  top: 0;bottom: 0;right: 0;left: 0;
+  justify-content: center;
+  align-items: center;
+}
+.input-room-box{
+  background-color: white;
+  height: 13rem;
+  border-radius: 10px;
+  position: relative;
+  top: 20%;left: 30%;
+
+}
+
+.room-card{
+  height: 3rem;
+  width: 90%;
+  border-radius: 10px;
+  background-color: #e2dddd;
+  
+}
+
+
