@@ -6,7 +6,7 @@ export default function Profile({showDp ,exitProfile ,name,email ,imgSrc}) {
 
     return (
         <>
-          <div className={` container-fluid  profile-area d-${showDp}`}>
+          <div className={`   profile-area d-${showDp}`}>
             <div className="row dp-row justify-content-center">
                 <div className="dp-box col-5">
                 <div className="row cancel-box justify-content-end ">

@@ -129,7 +129,9 @@ export default function UserLogin() {
   return (
     <>
    
-      <div className="container  box shadow-lg py-2">
+    <div className="d-flex main-box-auth">
+    
+      <div className="container  box shadow-lg py-4"> 
         <div className="row btns justify-content-center m-auto">
           <div
             className=""
@@ -268,6 +270,7 @@ export default function UserLogin() {
             </div>
           </div>
         )}
+      </div>
       </div>
 
       <ToastContainer position="top-center"/>

@@ -13,6 +13,9 @@ import Logo from "../chatAppLogo.png";
 import { BeatLoader } from "react-spinners";
 
 const socket = io.connect("https://mern-app-chatify.herokuapp.com/");
+// const socket = io.connect("http://localhost:4000");
+
+
 
 function ChatPage() {
   const history = useHistory();
@@ -46,6 +49,7 @@ function ChatPage() {
   //states
   const [dpInfo, setdpInfo] = useState("none");
   //const [user, setuser] = useState({});
+  const [isSelected, setisSelected] = useState(false);
   const [selectedUser, setselectedUser] = useState({});
   const [showDp, setshowDp] = useState("none");
   const [msg, setmsg] = useState("");
@@ -104,6 +108,7 @@ function ChatPage() {
 
   const selectedChat = (id, name, imgSrc, email) => {
     // console.log(id ,name);
+    setisSelected(true)
     setselectedUser({
       _id: id,
       name: name,
@@ -160,6 +165,8 @@ function ChatPage() {
       console.log("error in deleting messages", error.message);
     }
   };
+
+  console.log(selectedUser !== {});
   return (
     <>
       <Profile
@@ -178,14 +185,17 @@ function ChatPage() {
               <span style={{ color: "#B9F5D0" }}>ify</span>{" "}
             </h3>
           </div>
-          <div className="col-1 p-0 m-0">
-            <img
-              src={user.profilePic === "" ? dpImg : user.profilePic}
-              className="mt-1"
-              alt=""
-              onClick={profileClickHandler}
-            />
-          </div>
+        
+            <div className="col-4 user-info-top align-self-center m-0 p-0 d-flex">
+              <img
+                src={user.profilePic === "" ? dpImg : user.profilePic}
+                className="mt-1"
+                alt=""
+                onClick={profileClickHandler}
+              />
+              <h6 className="top-name">{user.name}</h6>
+            </div>
+     
 
           <div className={`dp-click my-1 d-${dpInfo} `}>
             <div className="row  justify-content-end">
@@ -211,17 +221,12 @@ function ChatPage() {
             </div>
           </div>
 
-          <div className="col-1 align-self-center m-0 p-0">
-            <h6>{user.name}</h6>
-          </div>
+
         </div>
       </div>
 
       <div className="chatbox container-fluid mt-3">
         <div className="row">
-          <div className={`col-sm-${sidebarShow} mx-4`}>
-            <Users selectedChat={selectedChat} users={users ? users : []} />
-          </div>
           <div className="col main-message-box">
             {Loading ? (
               <div className="loading-box message-box container d-flex justify-content-center align-items-center">
@@ -237,37 +242,36 @@ function ChatPage() {
               />
             )}
 
-            <div className="row input-msg-box mt-3">
-              <div className="form-group col-10">
-                <div className="typing-indicator">
-                  <BeatLoader loading={isTyping} size={20} color="#6bacf7f2" />
+            {isSelected ? (
+              <div className="row input-msg-box mb-2 p-1">
+                <div className="form-group col-9">
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={msg}
+                    onChange={(e) => {
+                      setmsg(e.target.value);
+                    }}
+                    onKeyUp={() => console.log("left key")}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        sendmsg();
+                      }
+                    }}
+                  />
                 </div>
-
-                <input
-                  className="form-control"
-                  type="text"
-                  value={msg}
-                  onChange={(e) => {
-                    setmsg(e.target.value);
-                    socket.emit("typing", {
-                      sender: user._id,
-                      receiver: selectedUser._id,
-                    });
-                  }}
-                  onKeyUp={() => console.log("left key")}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      sendmsg();
-                    }
-                  }}
-                />
+                <div className="col">
+                  <button className="msg-btn btn btn-primary" onClick={sendmsg}>
+                    Send
+                  </button>
+                </div>
               </div>
-              <div className="col">
-                <button className="msg-btn btn btn-primary" onClick={sendmsg}>
-                  Send
-                </button>
-              </div>
-            </div>
+            ) : (
+              <span></span>
+            )}
+          </div>
+          <div className={`col-sm-${sidebarShow} `}>
+            <Users selectedChat={selectedChat} users={users ? users : []} />
           </div>
         </div>
       </div>

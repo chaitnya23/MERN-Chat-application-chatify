@@ -17,8 +17,9 @@ export default function MessageBox({
   const [handleSidebarArrow, sethandleSidebarArrow] = useState("right");
   const [showDp, setshowDp] = useState("none");
 
+
   useEffect(() => {
-    if (Messages === undefined) {
+    if (Messages.length===0) {
       setisSelected(false);
     } else {
       setisSelected(true);
@@ -58,26 +59,28 @@ export default function MessageBox({
               <i className={`fas fa-arrow-${handleSidebarArrow}`}></i>
             </button>
           </div>
-          <div className="col-2">
-            <img
-              src={receiver.profilePic === "" ? dpImg : receiver.profilePic}
-              alt=""
-              onClick={showReceiverProfile}
-            />
+         {
+          isSelected?(
+            <div className="row">
+            <div className="col-2">
+              <img
+                src={receiver.profilePic === "" ? dpImg : receiver.profilePic}
+                alt=""
+                onClick={showReceiverProfile}
+              />
+            </div>
+            <div className="col">
+              <h5>{receiver.name}</h5> 
+            </div>
           </div>
-          <div className="col">
-            <h5>{receiver.name}</h5>
-          </div>
+          ):(
+            <div></div>
+          )
+         }
         </div>
-        {isSelected !== {} ? (
+        {isSelected  ? (
           <div className="  messages-container ">
-            {Messages.length === 0 ? (
-              <div className="LogoBox container-fluid m-0 ">
-                <img src={Logo} alt="#" />
-              </div>
-            ) : (
-              <div></div>
-            )}
+           
 
             <ScrollableFeed>
               {Messages.map((ele, idx) => {
@@ -88,7 +91,7 @@ export default function MessageBox({
                     key={idx}
                     color={ele.user.name === user.name ? "#BEE3F8" : "#B9F5D0"}
                     imgShow={
-                      isSameSender(Messages, ele, idx, user._id)||isLastMessage(Messages ,idx,user._id)
+                      isSameSender(Messages, ele, idx, user._id) || isLastMessage(Messages, idx, user._id)
                         ? "inline-block"
                         : "none"
                     }
@@ -100,32 +103,42 @@ export default function MessageBox({
             </ScrollableFeed>
           </div>
         ) : (
-          <div className=" "></div>
+          <div >
+          {Messages.length === 0 ? (
+            <div className="LogoBox  m-0 ">
+            <div>
+            <img src={Logo} alt="#" />
+            </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          </div>
         )}
       </div>
     </div>
   );
 }
 
-const Message = ({ msg, float, color, imgShow, imgSrc, deleteMsg }) => {
-  const open_delete_tool = () => {};
+const Message = ({ msg, float, color, imgShow, imgSrc }) => {
+
   return (
     <>
       <div className={` d-flex justify-content-${float}  msg-content `}>
         <div className="img-box">
           <img className={`d-${imgShow}`} src={imgSrc} alt="#" />
         </div>
-     
-        
-          <span
-            className=" mx-2 my-1 msg"
-            style={{ backgroundColor: color }}
-            onClick={open_delete_tool}
-          >
-            {msg}
-          </span>
-         
-      
+
+
+        <span
+          className=" mx-2 my-1 msg"
+          style={{ backgroundColor: color }}
+
+        >
+          {msg}
+        </span>
+
+
       </div>
     </>
   );

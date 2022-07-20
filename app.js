@@ -44,7 +44,7 @@ const port = process.env.PORT || 4000;
 
 const server = app.listen(port ,()=>{
     console.log(`listning at port ${port}`);
-})
+}) 
 
 //creating a socket-io server at same port
 const io = require('socket.io')(server ,{
